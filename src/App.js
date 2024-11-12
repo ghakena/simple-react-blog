@@ -11,7 +11,14 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      
+      <Header />
+      <Nav />
+      <Home />
+      <NewPost />
+      <PostPage />
+      <About />
+      <Missing />
+      <Footer />
     </div>
   );
 }
