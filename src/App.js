@@ -11,7 +11,7 @@ import { Routes, Route, useHistory } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header title="React.js Blog"/>
       <Nav />
       <Routes>
           <Route path='/' element={<Home />} />
