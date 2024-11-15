@@ -83,7 +83,7 @@ function App() {
       <Nav search={search} setSearch={setSearch}/>
 
       <Routes>
-          <Route path='/' element={<Home posts={posts}/>} />
+          <Route path='/' element={<Home posts={searchResults}/>} />
           <Route 
             path='/post' 
             element={
