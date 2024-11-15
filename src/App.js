@@ -65,6 +65,7 @@ function App() {
             path='/post' 
             element={
               <NewPost 
+                handleSubmit={handleSubmit}
                 postTitle={postTitle} 
                 setPostTitle={setPostTitle} 
                 postBody={postBody} 
