@@ -38,6 +38,8 @@ function App() {
   ]);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [postTitle, setPostTitle] = useState('');
+  const [postBody, setPostBody] = useState('');
 
   const navigate = useNavigate(); // this replaces useHistory from v5.
 
