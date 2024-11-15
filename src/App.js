@@ -50,8 +50,9 @@ function App() {
 
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const id = posts.length ? posts[post.length - 1].id + 1: 1;
   }
 
   return (
