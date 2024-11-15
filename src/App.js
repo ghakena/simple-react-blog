@@ -64,6 +64,7 @@ function App() {
     // clear up fields
     setPostTitle('');
     setPostBody('');
+    // return to home page
     navigate('/');
   }
 
