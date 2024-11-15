@@ -2,7 +2,7 @@ const NewPost = ({ handleSubmit, postTitle, setPostTitle, postBody, setPostBody 
     return (
       <main className="NewPost">
           <h2>Add new post</h2>
-          <form className="newPostForm">
+          <form className="newPostForm" onSubmit={handleSubmit}>
             <label htmlFor="postTitle">Title:</label>
             <input 
               id="postTitle"
@@ -18,7 +18,7 @@ const NewPost = ({ handleSubmit, postTitle, setPostTitle, postBody, setPostBody 
               value={postBody}
               onChange={(e) => setPostBody(e.target.value)} 
             />
-            <button type="submit" onSubmit={handleSubmit}>Add New Post</button>
+            <button type="submit">Add New Post</button>
           </form>
       </main>
     )
