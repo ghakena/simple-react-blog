@@ -7,7 +7,7 @@ import PostPage from './PostPage';
 import About from './About';
 import Missing from './Missing';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 
 function App() {
@@ -50,6 +50,9 @@ function App() {
     navigate('/');
 
   }
+
+  // define useEffect to work with the search bar and search results.
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
