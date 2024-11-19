@@ -11,32 +11,7 @@ import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 
 function App() {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "My 1st post",
-      datetime: "November 13, 2024 5:33:36 AM",
-      body: "lorem ipsum dolor"
-    },
-    {
-      id: 2,
-      title: "My 2nd post",
-      datetime: "November 13, 2024 6:33:36 AM",
-      body: "clearly under react hooks and other functionality"
-    },
-    {
-      id: 3,
-      title: "My 3rd post",
-      datetime: "November 13, 2024 12:33:36 PM",
-      body: "this could be a bunch of random stuff about the react-router-dom"
-    },
-    {
-      id: 4,
-      title: "My 4th post",
-      datetime: "November 13, 2024 5:35:31 PM",
-      body: "some stuff about router hooks and links"
-    }
-  ]);
+  const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [postTitle, setPostTitle] = useState('');
