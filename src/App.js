@@ -47,6 +47,8 @@ function App() {
         }
       }
     }
+
+    fetchData();
   }, [])
 
   // define useEffect to work with the search bar and search results.
