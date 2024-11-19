@@ -23,7 +23,6 @@ function App() {
     const postsList = posts.filter(post => post.id !== id);
     setPosts(postsList);
     navigate('/');
-
   }
 
   // define useEffect to work with the search bar and search results.
