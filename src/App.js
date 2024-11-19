@@ -9,6 +9,7 @@ import Missing from './Missing';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
+import api from './api/posts';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -24,6 +25,29 @@ function App() {
     setPosts(postsList);
     navigate('/');
   }
+
+  // useEffect to fetch our data. will run at load time, so it will have an empty dependency array
+  useEffect(() => {
+    // function to fetch data using axios api.
+    const fetchData = async () => {
+      try {
+        const response = await api.get('/posts');
+        if (response && response.data) {
+          setPosts(response.data)
+        }
+      } catch (err) {
+        if (err.response) {
+          // response not in the 200 response range
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          // if we did not receive err.response
+          console.log(`Error: ${err.message}`);
+        }
+      }
+    }
+  }, [])
 
   // define useEffect to work with the search bar and search results.
   // filter out posts that contain characters that match the search terms.
