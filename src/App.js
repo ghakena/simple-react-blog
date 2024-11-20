@@ -74,7 +74,19 @@ function App() {
 
   // function to handle update of posts.
   const handleEdit = async (id) => {
-    
+    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+    const updatedPost = {id, title: editPostTitle, datetime, body: editPostBody};
+
+    try {
+      const response = await api.put(`/posts/${id}`, updatedPost)
+      // to avoid repeated posts in our db, we map each post and if a post in db matches the id of our post being updated, we repopulate our db with the updated response from the update api endpoint. otherwise, we maintain post as is.
+      setPosts(posts.map(post => post.id === id ? {...response.data} : post));
+      // set post title and post body back to blank.
+      setEditPostTitle('');
+      setEditPostBody('');
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   }
 
   const handleSubmit = async (e) => {
