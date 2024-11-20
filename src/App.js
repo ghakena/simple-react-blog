@@ -20,12 +20,6 @@ function App() {
 
   const navigate = useNavigate(); // this replaces useHistory from v5.
 
-  const handleDelete = (id) => {
-    const postsList = posts.filter(post => post.id !== id);
-    setPosts(postsList);
-    navigate('/');
-  }
-
   // useEffect to fetch our data. will run at load time, so it will have an empty dependency array
   useEffect(() => {
     // function to fetch data using the axios api.
@@ -47,9 +41,22 @@ function App() {
         }
       }
     }
-
+    
     fetchData();
   }, [])
+
+  // handle deletion of posts.
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/posts/${id}`);
+      const postsList = posts.filter(post => post.id !== id);
+      setPosts(postsList);
+      navigate('/');
+
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  }
 
   // define useEffect to work with the search bar and search results.
   // filter out posts that contain characters that match the search terms.
