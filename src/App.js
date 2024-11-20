@@ -63,18 +63,25 @@ function App() {
     setSearchResults(filteredResults.reverse());
   }, [posts, search])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1: 1;
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
     const newPost = {id, title: postTitle, datetime, body: postBody};
-    const allPosts = [...posts, newPost];
-    setPosts(allPosts);
-    // clear up fields
-    setPostTitle('');
-    setPostBody('');
-    // return to home page
-    navigate('/');
+
+    try {
+      // posting to endpoint '/posts' using the axios api.
+      const response = await api.post('/posts', newPost);
+      const allPosts = [...posts, response.data];
+      setPosts(allPosts);
+      // clear up fields
+      setPostTitle('');
+      setPostBody('');
+      // return to home page
+      navigate('/');
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   }
 
   return (
