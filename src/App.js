@@ -28,7 +28,7 @@ function App() {
 
   // useEffect to fetch our data. will run at load time, so it will have an empty dependency array
   useEffect(() => {
-    // function to fetch data using axios api.
+    // function to fetch data using the axios api.
     const fetchData = async () => {
       try {
         const response = await api.get('/posts');
