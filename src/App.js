@@ -131,6 +131,19 @@ function App() {
               />
             } 
           />
+          <Route 
+            path='/edit/:id' 
+            element={
+              <EditPost 
+                posts={posts}
+                handleEdit={handleEdit}
+                editpostTitle={editpostTitle} 
+                setEditPostTitle={setEditPostTitle} 
+                editPostBody={editPostBody} 
+                setEditPostBody={setEditPostBody}
+              />
+            } 
+          />
           <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete}/>}/>
           <Route path='/about' element={<About />} />
           <Route path='*' element={<Missing />} />
