@@ -10,7 +10,7 @@ const EditPost = ({
   
   useEffect(() => {
     if (post) {
-        // if post exists, the form will already be filled out with pre-existing title and body, ready to be edited.
+        // if post exists, the form will already be filled out with pre-existing post title and body, ready to be edited.
         setEditPostTitle(post.title);
         setEditPostBody(post.body);
     }
