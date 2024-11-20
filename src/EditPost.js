@@ -20,6 +20,7 @@ const EditPost = ({
     // the body of the post update page will be just like that of the new post creation page. copy from NewPost component and maintain class names for consistent formatting.
     <main className="NewPost">
         {
+            // if the post exists, then return the fragment below
             editPostTitle && 
             <>
                 <h2>Edit Post</h2>
@@ -41,6 +42,17 @@ const EditPost = ({
                     />
                     <button type="submit" onClick={(e) => handleEdit(post.id)}>Update Post</button>
                 </form>
+            </>
+        }
+        {   
+            // if the post does not exist but is requested for.
+            !editPostTitle &&
+            <>
+                <h2>Post Not Found</h2>
+                <p>Well, that's embarrasing lol</p>
+                <p>
+                    <Link to='/'>Return to home page here.</Link>
+                </p>
             </>
         }
       </main>
