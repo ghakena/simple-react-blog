@@ -70,6 +70,11 @@ function App() {
     setSearchResults(filteredResults.reverse());
   }, [posts, search])
 
+  // function to handle update of posts.
+  const handleEdit = async (id) => {
+    
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1: 1;
