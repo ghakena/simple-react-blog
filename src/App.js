@@ -84,6 +84,8 @@ function App() {
       // set post title and post body back to blank.
       setEditPostTitle('');
       setEditPostBody('');
+      // navigate back to the home feed
+      navigate('/');
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
