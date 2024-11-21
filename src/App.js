@@ -11,6 +11,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import api from './api/posts';
+import useWindowSize from './hooks/useWindowSize';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -20,6 +21,8 @@ function App() {
   const [postBody, setPostBody] = useState('');
   const [editPostTitle, setEditPostTitle] = useState('');
   const [editPostBody, setEditPostBody] = useState('');
+  // destructure and pull out the "width" from useWindowSize below.
+  const { width } = useWindowSize();
 
   const navigate = useNavigate(); // this replaces useHistory from v5.
 
@@ -115,7 +118,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header title="React.js Blog"/>
+      <Header title="React.js Blog" width={width}/>
       <Nav search={search} setSearch={setSearch}/>
 
       <Routes>
