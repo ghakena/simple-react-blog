@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import api from './api/posts';
 import useWindowSize from './hooks/useWindowSize';
+import useAxiosFetch from './hooks/useAxiosFetch';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -23,33 +24,38 @@ function App() {
   const [editPostBody, setEditPostBody] = useState('');
   // destructure and pull out the "width" from the imported useWindowSize custom hook below.
   const { width } = useWindowSize();
+  // destructure useAxiosFetch to extract important items.
+  const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
 
   const navigate = useNavigate(); // this replaces useHistory from v5.
 
   // useEffect to fetch our data. will run at load time, so it will have an empty dependency array
-  useEffect(() => {
-    // function to fetch data using the axios api.
-    const fetchData = async () => {
-      try {
-        const response = await api.get('/posts');
-        if (response && response.data) {
-          setPosts(response.data)
-        }
-      } catch (err) {
-        if (err.response) {
-          // response not in the 200 response range
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          // if we did not receive err.response
-          console.log(`Error: ${err.message}`);
-        }
-      }
-    }
+  // useEffect(() => {
+  //   // function to fetch data using the axios api.
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await api.get('/posts');
+  //       if (response && response.data) {
+  //         setPosts(response.data)
+  //       }
+  //     } catch (err) {
+  //       if (err.response) {
+  //         // response not in the 200 response range
+  //         console.log(err.response.data);
+  //         console.log(err.response.status);
+  //         console.log(err.response.headers);
+  //       } else {
+  //         // if we did not receive err.response
+  //         console.log(`Error: ${err.message}`);
+  //       }
+  //     }
+  //   }
     
-    fetchData();
-  }, [])
+  //   fetchData();
+  // }, [])
+  useEffect(() => {
+    setPosts(data);
+  }, [data])
 
   // handle deletion of posts.
   const handleDelete = async (id) => {
@@ -122,7 +128,12 @@ function App() {
       <Nav search={search} setSearch={setSearch}/>
 
       <Routes>
-          <Route path='/' element={<Home posts={searchResults}/>} />
+          <Route 
+            path='/' 
+            element={<Home posts={searchResults}/>} 
+            fetchError={fetchError}
+            isLoading={isLoading}
+          />
           <Route 
             path='/post' 
             element={
