@@ -20,12 +20,17 @@ const useWindowSize = () => {
         window.addEventListener("resize", handleResize);
 
         // to prevent memory leak, it is important to remove the event listener after it is triggered. define a clean up function.
-        const cleanUp = () => {
-            console.log('this runs whenever a useEffect dependency changes.');
-            window.removeEventListener("resize", handleResize);
-        }
+        
+        // const cleanUp = () => {
+        //     console.log('this runs whenever a useEffect dependency changes.');
+        //     window.removeEventListener("resize", handleResize);
+        // }
 
-        return cleanUp;
+        // return cleanUp;
+
+        // with a refactor, we can simply return the removal of the resize event listener from the window as shown below.
+        return () => window.removeEventListener("resize", handleResize);
+
 
     }, [])
 
