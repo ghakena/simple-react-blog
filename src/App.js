@@ -21,7 +21,7 @@ function App() {
   const [postBody, setPostBody] = useState('');
   const [editPostTitle, setEditPostTitle] = useState('');
   const [editPostBody, setEditPostBody] = useState('');
-  // destructure and pull out the "width" from useWindowSize below.
+  // destructure and pull out the "width" from the imported useWindowSize custom hook below.
   const { width } = useWindowSize();
 
   const navigate = useNavigate(); // this replaces useHistory from v5.
