@@ -40,6 +40,7 @@ const useAxiosFetch = (dataUrl) => {
         fetchData(dataUrl);
 
         // data clean-up function.
+        // will cancel the request if the component is unloaded.
         const cleanUp = () => {
             console.log('cleaning up...');
             isMounted = false;
