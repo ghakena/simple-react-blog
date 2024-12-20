@@ -13,4 +13,3 @@ const Home = ({ posts, fetchError, isLoading }) => {
 }
 
 export default Home;
-  
