@@ -53,7 +53,7 @@ function App() {
     
   //   fetchData();
   // }, [])
-  
+
   useEffect(() => {
     setPosts(data);
   }, [data])
@@ -91,11 +91,11 @@ function App() {
     try {
       const response = await api.put(`/posts/${id}`, updatedPost)
       // to avoid repeated posts in our db, we map each post and if a post in db matches the id of our post being updated, we repopulate our db with the updated response from the update api endpoint. otherwise, we maintain post as is.
-      setPosts(posts.map(post => post.id === id ? {...response.data} : post));
+      setPosts(posts.map(post => post.id === id ? { ...response.data } : post));
       // set post title and post body back to blank.
       setEditPostTitle('');
       setEditPostBody('');
-      // navigate back to the home feed
+      // navigate back to the home feed to see edited post among existing posts.
       navigate('/');
     } catch (err) {
       console.log(`Error: ${err.message}`);
