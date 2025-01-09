@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
+// this is like a combination of the "new post" page where we created a new post with the help of a controlled form and the "post details" page where we pulled in post details from a parameter.
 const EditPost = ({
     posts, handleEdit, editPostTitle, setEditPostTitle, editPostBody, setEditPostBody
 }) => {
