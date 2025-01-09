@@ -53,6 +53,7 @@ function App() {
     
   //   fetchData();
   // }, [])
+  
   useEffect(() => {
     setPosts(data);
   }, [data])
