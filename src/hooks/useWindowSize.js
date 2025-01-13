@@ -15,6 +15,7 @@ const useWindowSize = () => {
             })
         }
 
+        // call into action after definition (will happen at load-time)
         handleResize();
 
         // to get the value to continue to adjust whenever window is resized, use an event listener.
@@ -35,6 +36,7 @@ const useWindowSize = () => {
 
     }, [])
 
+    // this is not inside the useEffect.
     return windowSize;
 }
 
