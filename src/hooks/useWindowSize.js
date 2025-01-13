@@ -30,7 +30,7 @@ const useWindowSize = () => {
 
         // return cleanUp;
 
-        // with a refactor, we can simply return the removal of the resize event listener from the window as shown below.
+        // with a refactor, we can simply return the removal of the resize event listener from the window as shown below. Whenever you see a "return" at the end of a useEffect, that is usually a cleanup function.
         return () => window.removeEventListener("resize", handleResize);
 
 
