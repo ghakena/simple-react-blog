@@ -55,6 +55,7 @@ function App() {
   // }, [])
 
   useEffect(() => {
+    // set the posts as the data being received from the local json-server endpoint using the useAxiosFetch custom hook.
     setPosts(data);
   }, [data])
 
