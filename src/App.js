@@ -129,14 +129,12 @@ function App() {
     <div className="App">
       <DataProvider>
         <Header title="React.js Blog" />
-        <Nav search={search} setSearch={setSearch}/>
+        <Nav />
 
         <Routes>
             <Route 
               path='/' 
-              element={<Home posts={searchResults}/>} 
-              fetchError={fetchError}
-              isLoading={isLoading}
+              element={<Home />} 
             />
             <Route 
               path='/post' 
