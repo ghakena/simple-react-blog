@@ -1,8 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
-// 2 dots as you're getting out of the context folder first before accessing api and hooks folder.
-import api from '../api/posts';
 import useAxiosFetch from '../hooks/useAxiosFetch';
 
 const DataContext = createContext({});
@@ -11,9 +8,6 @@ export const DataProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    
-    const [editPostTitle, setEditPostTitle] = useState('');
-    const [editPostBody, setEditPostBody] = useState('');
     // destructure useAxiosFetch to extract important items.
     const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
 
@@ -61,30 +55,11 @@ export const DataProvider = ({ children }) => {
         setSearchResults(filteredResults.reverse());
     }, [posts, search])
 
-     // function to handle update of posts.
-    const handleEdit = async (id) => {
-        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-        const updatedPost = {id, title: editPostTitle, datetime, body: editPostBody};
-
-        try {
-            const response = await api.put(`/posts/${id}`, updatedPost)
-            // to avoid repeated posts in our db, we map each post and if a post in db matches the id of our post being updated, we repopulate our db with the updated response from the update api endpoint. otherwise, we maintain post as is.
-            setPosts(posts.map(post => post.id === id ? { ...response.data } : post));
-            // set post title and post body back to blank.
-            setEditPostTitle('');
-            setEditPostBody('');
-            // navigate back to the home feed to see edited post among existing posts.
-            navigate('/');
-        } catch (err) {
-            console.log(`Error: ${err.message}`);
-        }
-    }
-    
     return (
         <DataContext.Provider value={{
             search, setSearch,
             searchResults, fetchError, isLoading,
-            posts, setPosts, handleEdit, editPostTitle, setEditPostTitle, editPostBody, setEditPostBody,
+            posts, setPosts,
             posts
         }}>
             { children }
