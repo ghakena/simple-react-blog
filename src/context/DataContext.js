@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useAxiosFetch from '../hooks/useAxiosFetch';
 
 const DataContext = createContext({});
@@ -10,8 +9,6 @@ export const DataProvider = ({ children }) => {
     const [searchResults, setSearchResults] = useState([]);
     // destructure useAxiosFetch to extract important items.
     const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
-
-    const navigate = useNavigate(); // this replaces useHistory from v5.
 
     // useEffect to fetch our data. will run at load time, so it will have an empty dependency array
     // useEffect(() => {
