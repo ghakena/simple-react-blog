@@ -65,6 +65,59 @@ export const DataProvider = ({ children }) => {
         setSearchResults(filteredResults.reverse());
     }, [posts, search])
 
+    // handle deletion of posts.
+    const handleDelete = async (id) => {
+        try {
+            await api.delete(`/posts/${id}`);
+            const postsList = posts.filter(post => post.id !== id);
+            setPosts(postsList);
+            navigate('/');
+
+        } catch (err) {
+            console.log(`Error: ${err.message}`);
+        }
+    }
+
+     // function to handle update of posts.
+    const handleEdit = async (id) => {
+        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+        const updatedPost = {id, title: editPostTitle, datetime, body: editPostBody};
+
+        try {
+            const response = await api.put(`/posts/${id}`, updatedPost)
+            // to avoid repeated posts in our db, we map each post and if a post in db matches the id of our post being updated, we repopulate our db with the updated response from the update api endpoint. otherwise, we maintain post as is.
+            setPosts(posts.map(post => post.id === id ? { ...response.data } : post));
+            // set post title and post body back to blank.
+            setEditPostTitle('');
+            setEditPostBody('');
+            // navigate back to the home feed to see edited post among existing posts.
+            navigate('/');
+        } catch (err) {
+            console.log(`Error: ${err.message}`);
+        }
+    }
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const id = posts.length ? posts[posts.length - 1].id + 1: 1;
+        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+        const newPost = {id, title: postTitle, datetime, body: postBody};
+    
+        try {
+            // posting to endpoint '/posts' using the axios api.
+            const response = await api.post('/posts', newPost);
+            const allPosts = [...posts, response.data];
+            setPosts(allPosts);
+            // clear up fields
+            setPostTitle('');
+            setPostBody('');
+            // return to home page
+            navigate('/');
+        } catch (err) {
+            console.log(`Error: ${err.message}`);
+        }
+    }
+
     return (
         <DataContext.Provider value={{
 
