@@ -52,6 +52,19 @@ export const DataProvider = ({ children }) => {
         // set the posts as the data being received from the local json-server endpoint using the useAxiosFetch custom hook. The dependency array will hold the data. The useEffect will run whenever the data changes.
         setPosts(data);
     }, [data])
+
+    // define useEffect to work with the search bar and search results.
+    // filter out posts that contain characters that match the search terms.
+    useEffect(() => {
+        const filteredResults = posts.filter(post => (
+        ((post.body).toLowerCase()).includes(search.toLowerCase()) ||
+        ((post.title).toLowerCase()).includes(search.toLowerCase())
+        ));
+
+        // set the search results in a way such that the newer posts spring up first.
+        setSearchResults(filteredResults.reverse());
+    }, [posts, search])
+
     return (
         <DataContext.Provider value={{
 
