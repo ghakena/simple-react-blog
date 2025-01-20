@@ -55,7 +55,7 @@ function App() {
   // }, [])
 
   useEffect(() => {
-    // set the posts as the data being received from the local json-server endpoint using the useAxiosFetch custom hook.
+    // set the posts as the data being received from the local json-server endpoint using the useAxiosFetch custom hook. The dependency array will hold the data. The useEffect will run whenever the data changes.
     setPosts(data);
   }, [data])
 
