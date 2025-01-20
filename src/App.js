@@ -128,7 +128,7 @@ function App() {
   return (
     <div className="App">
       <DataProvider>
-        <Header title="React.js Blog" width={width}/>
+        <Header title="React.js Blog" />
         <Nav search={search} setSearch={setSearch}/>
 
         <Routes>
