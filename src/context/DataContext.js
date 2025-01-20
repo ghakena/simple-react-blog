@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 // 2 dots as you're getting out of the context folder first before accessing api and hooks folder.
 import api from '../api/posts';
-import useWindowSize from '../hooks/useWindowSize';
 import useAxiosFetch from '../hooks/useAxiosFetch';
 
 const DataContext = createContext({});
@@ -16,8 +15,6 @@ export const DataProvider = ({ children }) => {
     const [postBody, setPostBody] = useState('');
     const [editPostTitle, setEditPostTitle] = useState('');
     const [editPostBody, setEditPostBody] = useState('');
-    // destructure and pull out the "width" from the imported useWindowSize custom hook below.
-    const { width } = useWindowSize();
     // destructure useAxiosFetch to extract important items.
     const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
 
@@ -120,7 +117,6 @@ export const DataProvider = ({ children }) => {
 
     return (
         <DataContext.Provider value={{
-            width, 
             search, setSearch,
             searchResults, fetchError, isLoading,
             handleSubmit, postTitle, setPostTitle, postBody, setPostBody,
