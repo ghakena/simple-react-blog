@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useContext } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import DataContext from './context/DataContext';
 
 // this is like a combination of the "new post" page where we created a new post with the help of a controlled form and the "post details" page where we pulled in post details from a parameter.
-const EditPost = ({
-    posts, handleEdit, editPostTitle, setEditPostTitle, editPostBody, setEditPostBody
-}) => {
+const EditPost = () => {
+  const { posts, handleEdit, editPostTitle, setEditPostTitle, editPostBody, setEditPostBody } = useContext(DataContext);  
   const { id } = useParams();
   // grab the post whose id matches the id grabbed from url using useParams() above.   
   const post = posts.find(post => (post.id).toString() === id);
