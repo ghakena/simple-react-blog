@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 const useWindowSize = () => {
     // state to handle the window size i.e. width and height.
