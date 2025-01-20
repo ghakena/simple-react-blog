@@ -1,12 +1,6 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "My 1st post",
-      "datetime": "November 13, 2024 5:33:36 AM",
-      "body": "lorem ipsum dolor"
-    },
-    {
       "id": "2",
       "title": "My 2nd post",
       "datetime": "November 13, 2024 6:33:36 AM",
@@ -33,8 +27,14 @@
     {
       "id": "411",
       "title": "The Context API",
-      "datetime": "January 20, 2025 11:56:09 AM",
+      "datetime": "January 20, 2025 12:13:52 PM",
       "body": "This will help you clean up your App.js file by moving all states, all useEffect hooks and other functionalities to the particular context file in question e.g. a DataContext.js file created inside a context folder insider your React src folder."
+    },
+    {
+      "id": "4111",
+      "title": "My first post replacement",
+      "datetime": "January 20, 2025 12:17:36 PM",
+      "body": "Just some text to test addition of posts."
     }
   ]
 }

@@ -123,7 +123,9 @@ export const DataProvider = ({ children }) => {
             width, 
             search, setSearch,
             searchResults, fetchError, isLoading,
-            handleSubmit, postTitle, setPostTitle, postBody, setPostBody
+            handleSubmit, postTitle, setPostTitle, postBody, setPostBody,
+            posts, handleEdit, editPostTitle, setEditPostTitle, editPostBody, setEditPostBody,
+            posts, handleDelete
         }}>
             { children }
         </DataContext.Provider>
