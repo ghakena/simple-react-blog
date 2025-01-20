@@ -123,7 +123,7 @@ export const DataProvider = ({ children }) => {
             width, 
             search, setSearch,
             searchResults, fetchError, isLoading,
-            
+            handleSubmit, postTitle, setPostTitle, postBody, setPostBody
         }}>
             { children }
         </DataContext.Provider>

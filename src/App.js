@@ -134,19 +134,11 @@ function App() {
         <Routes>
             <Route 
               path='/' 
-              element={<Home />} 
+              element={ <Home /> } 
             />
             <Route 
               path='/post' 
-              element={
-                <NewPost 
-                  handleSubmit={handleSubmit}
-                  postTitle={postTitle} 
-                  setPostTitle={setPostTitle} 
-                  postBody={postBody} 
-                  setPostBody={setPostBody}
-                />
-              } 
+              element={ <NewPost /> } 
             />
             <Route 
               path='/edit/:id' 

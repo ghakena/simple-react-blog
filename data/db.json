@@ -29,6 +29,12 @@
       "title": "A random post (Axios)",
       "datetime": "January 09, 2025 11:10:41 AM",
       "body": "Here's how you can use the axios api to post data to an endpoint. Enjoy!"
+    },
+    {
+      "id": "411",
+      "title": "The Context API",
+      "datetime": "January 20, 2025 11:56:09 AM",
+      "body": "This will help you clean up your App.js file by moving all states, all useEffect hooks and other functionalities to the particular context file in question e.g. a DataContext.js file created inside a context folder insider your React src folder."
     }
   ]
 }
