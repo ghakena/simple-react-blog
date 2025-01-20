@@ -61,19 +61,6 @@ export const DataProvider = ({ children }) => {
         setSearchResults(filteredResults.reverse());
     }, [posts, search])
 
-    // handle deletion of posts.
-    const handleDelete = async (id) => {
-        try {
-            await api.delete(`/posts/${id}`);
-            const postsList = posts.filter(post => post.id !== id);
-            setPosts(postsList);
-            navigate('/');
-
-        } catch (err) {
-            console.log(`Error: ${err.message}`);
-        }
-    }
-
      // function to handle update of posts.
     const handleEdit = async (id) => {
         const datetime = format(new Date(), 'MMMM dd, yyyy pp');
@@ -93,14 +80,12 @@ export const DataProvider = ({ children }) => {
         }
     }
     
-    
-
     return (
         <DataContext.Provider value={{
             search, setSearch,
             searchResults, fetchError, isLoading,
             posts, setPosts, handleEdit, editPostTitle, setEditPostTitle, editPostBody, setEditPostBody,
-            posts, handleDelete
+            posts
         }}>
             { children }
         </DataContext.Provider>

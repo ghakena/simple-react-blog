@@ -1,9 +1,24 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
+import api from './api/posts';
 import DataContext from './context/DataContext';
 
 const PostPage = () => {
-  const { posts, handleDelete } = useContext(DataContext);
+  const { posts, setPosts } = useContext(DataContext);
+  const navigate = useNavigate();
+
+  // handle deletion of posts.
+  const handleDelete = async (id) => {
+      try {
+          await api.delete(`/posts/${id}`);
+          const postsList = posts.filter(post => post.id !== id);
+          setPosts(postsList);
+          navigate('/');
+
+      } catch (err) {
+          console.log(`Error: ${err.message}`);
+      }
+  }
   
   // to access the route parameter defined dynamically in App.js i.e. :id
   const { id } = useParams();
