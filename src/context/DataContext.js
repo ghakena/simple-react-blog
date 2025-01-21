@@ -57,7 +57,6 @@ export const DataProvider = ({ children }) => {
             search, setSearch,
             searchResults, fetchError, isLoading,
             posts, setPosts,
-            posts
         }}>
             { children }
         </DataContext.Provider>
