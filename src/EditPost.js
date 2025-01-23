@@ -54,20 +54,22 @@ const EditPost = () => {
                     <form className="newPostForm" onSubmit={(e) => e.preventDefault()}>
                         <label htmlFor="editPostTitle">Title:</label>
                         <input 
-                        id="editPostTitle"
-                        type="text" 
-                        required
-                        value={editPostTitle}
-                        onChange={(e) => setEditPostTitle(e.target.value)}
+                            id="editPostTitle"
+                            type="text" 
+                            required
+                            value={editPostTitle}
+                            onChange={(e) => setEditPostTitle(e.target.value)}
                         />
                         <label htmlFor="editPostBody">Content:</label>
                         <textarea 
-                        id="editPostBody"
-                        required
-                        value={editPostBody}
-                        onChange={(e) => setEditPostBody(e.target.value)} 
+                            id="editPostBody"
+                            required
+                            value={editPostBody}
+                            onChange={(e) => setEditPostBody(e.target.value)} 
                         />
-                        <button type="submit" onClick={(e) => handleEdit(post.id)}>Update Post</button>
+                        <button type="submit" onClick={(e) => handleEdit(post.id)}>
+                            Update Post
+                        </button>
                     </form>
                 </>
             }
@@ -76,7 +78,7 @@ const EditPost = () => {
                 !editPostTitle &&
                 <>
                     <h2>Post Not Found</h2>
-                    <p>Well, that's embarrasing lol</p>
+                    <p>Well, we can't seem to find the post you're lookin' for. Sorry!</p>
                     <p>
                         <Link to='/'>Return to home page here.</Link>
                     </p>
